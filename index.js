@@ -28,12 +28,20 @@ async function fetchURLs() {
 app.get('/', async (req, res) => {
     const baseURL = 'https://www.hotstar.com'
     const rawUrls = await fetchURLs();
+    // content is to create basic links so it's easy to click on.
     let content = '<html><body>';
-    rawUrls.forEach(element => {
-        const url = baseURL + element;
-        console.log(url);
-        content = content + '<a href="' + url + '">' + url + '</a><br/>';
-    });
+    for (index in rawUrls) {
+        console.log(`element: ${rawUrls[index]}`);
+        const element = rawUrls[index];
+        // below filters out urls without reply in it, to avoid spoilers from url names.
+        if (element.includes("replay")) {
+            const url = baseURL + element;
+            content = content + '<a href="' + url + '">' + url + '</a><br/>';
+        } else {
+            continue;
+        }
+
+    }
     const closeContent = '</body></html>';
     content = content + closeContent;
     console.log(content);
