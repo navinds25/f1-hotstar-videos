@@ -7,4 +7,12 @@
 
 ### Instructions to run:
 
-``` yarn start ```
+``` yarn && yarn start ```
+
+### As a container:
+
+``` podman run docker.io/navinds25/f1-hotstar-videos ```
+
+or
+
+``` docker run -it -p 7100:7100 navinds25/f1-hotstar-videos ```

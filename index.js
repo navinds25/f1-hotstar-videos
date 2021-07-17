@@ -3,6 +3,7 @@ const fastify = require('fastify');
 const app = fastify({
     logger: true
 });
+const port = 7100;
 
 /* 
 The function below scrapes hotstar for the f1 video urls, so we can avoid spoilers in the images and hotstar home page.
@@ -49,7 +50,7 @@ app.get('/', async (req, res) => {
     res.send(content);
 });
 
-app.listen(3000, function (err, address) {
+app.listen(port, '0.0.0.0', function (err, address) {
     if (err) {
         console.error(err)
         process.exit(1)
