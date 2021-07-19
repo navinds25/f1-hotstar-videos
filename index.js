@@ -22,7 +22,6 @@ async function fetchURLs() {
     })
     await page.close();
     await browser.close();
-    console.log(urls);
     return urls;
 };
 
@@ -32,7 +31,6 @@ app.get('/', async (req, res) => {
     // content is to create basic links so it's easy to click on.
     let content = '<html><body>';
     for (index in rawUrls) {
-        console.log(`element: ${rawUrls[index]}`);
         const element = rawUrls[index];
         // below filters out urls without reply in it, to avoid spoilers from url names.
         if (element.includes("replay")) {
